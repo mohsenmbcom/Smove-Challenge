@@ -5,7 +5,7 @@ interface CarsBookingRepositoryContract {
         fun loadCarsLocation()
     }
 
-    interface BookingAvailibilityRepository {
-        fun loadCarsAvailibility(startTime: Long, endTime: Long)
+    interface BookingAvailabilityRepository {
+        fun loadCarsAvailability(startTime: Long, endTime: Long)
     }
 }
