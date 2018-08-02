@@ -9,7 +9,7 @@ class BookingAvailabilityRepositoryImpl @Inject constructor(private val webServi
                                                             private val schedulersProvider: SchedulersProvider)
     : CarsBookingRepositoryContract.BookingAvailabilityRepository {
 
-    val availabilitySubject: BehaviorSubject<List<BookingAvailability>> = BehaviorSubject.create()
+    override val availabilitySubject: BehaviorSubject<List<BookingAvailability>> = BehaviorSubject.create()
 
     override fun loadCarsAvailability(startTime: Long, endTime: Long) {
         webService

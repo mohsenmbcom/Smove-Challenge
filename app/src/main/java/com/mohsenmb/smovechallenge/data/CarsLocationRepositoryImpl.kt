@@ -8,7 +8,7 @@ import javax.inject.Inject
 class CarsLocationRepositoryImpl @Inject constructor(private val webService: SmoveWebService,
                                                      private val schedulersProvider: SchedulersProvider)
     : CarsBookingRepositoryContract.CarsLocationRepository {
-    val carsLocationSubject: BehaviorSubject<List<CarLocation>> = BehaviorSubject.create()
+    override val carsLocationSubject: BehaviorSubject<List<CarLocation>> = BehaviorSubject.create()
 
     override fun loadCarsLocation() {
         webService
