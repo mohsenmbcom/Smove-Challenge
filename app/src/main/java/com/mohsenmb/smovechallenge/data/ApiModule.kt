@@ -4,7 +4,6 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
-import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.CallAdapter
@@ -30,7 +29,7 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(@Named("apiBaseUrl") baseUrl: HttpUrl, client: OkHttpClient, converterFactory: Converter.Factory,
+    fun provideRetrofit(@Named("apiBaseUrl") baseUrl: String, client: OkHttpClient, converterFactory: Converter.Factory,
                         callAdapterFactory: CallAdapter.Factory): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -69,8 +68,8 @@ class ApiModule {
     @Provides
     @Singleton
     @Named("apiBaseUrl")
-    fun provideApiBaseUrl(): HttpUrl? {
-        return HttpUrl.parse(API_BASE_URL)
+    fun provideApiBaseUrl(): String {
+        return API_BASE_URL
     }
 
     @Provides
@@ -78,4 +77,8 @@ class ApiModule {
     fun provideRxJavaCallAdapterFactory(): CallAdapter.Factory {
         return RxJava2CallAdapterFactory.create()
     }
+
+    @Provides
+    @Singleton
+    fun provideSchedulersProvider(): SchedulersProvider = SchedulersProviderImpl()
 }

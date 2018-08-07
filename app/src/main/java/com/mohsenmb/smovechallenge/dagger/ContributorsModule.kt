@@ -1,6 +1,8 @@
 package com.mohsenmb.smovechallenge.dagger
 
 import com.mohsenmb.smovechallenge.presentation.HomeActivity
+import com.mohsenmb.smovechallenge.presentation.HomeActivityModule
+import com.mohsenmb.smovechallenge.presentation.booking.BookingAvailabilityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -12,6 +14,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ContributorsModule {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [BookingAvailabilityModule::class, HomeActivityModule::class])
     abstract fun bindHomeActivity(): HomeActivity
 }
